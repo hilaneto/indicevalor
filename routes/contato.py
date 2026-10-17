@@ -19,7 +19,7 @@ def contato():
 
         try:
             with conectar():
-                Contato.inserir(nm_contato=nm_contato, email=email, celular=celular, comentario=comentario, dt_nascimento=dt_nascimento)
+                Contato.inserir(nm_contato=nm_contato.strip(), email=email, celular=celular, comentario=comentario, dt_nascimento=dt_nascimento)
             mensagem = "Contato cadastrado com sucesso."
 
         except IntegrityError:

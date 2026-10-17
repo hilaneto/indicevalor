@@ -24,6 +24,7 @@ app.register_blueprint(download_bp)
 app.register_blueprint(cpf_bp, url_prefix="/cpf")
 app.register_blueprint(cnpj_bp, url_prefix="/cnpj")
 
+
 @app.route("/")
 def index():
     dt_atual = datetime.now()

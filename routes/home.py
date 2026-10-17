@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, send_from_directory, session, redirect, url_for
+from datetime import datetime
+import calendar
 from models.moeda import Moeda
 from models.ipca import Ipca
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
 from models.ibovespa import Ibovespa
-from datetime import datetime
-import calendar
+from models.igpm import Igpm
+
 
 home_bp = Blueprint('home', __name__)
 
@@ -52,6 +54,19 @@ def home():
     vl_ipca_formato = f"{vl_ipca:.2f}%".replace(".", ",")
     dt = ipca_atual.dt_referencia
     dtref_ipca = f"{meses[dt.month - 1]} - {dt.year}"
+
+
+    # IGP-M -----------------------------------------------------
+    igpm_atual = Igpm.atual()
+
+    if igpm_atual:
+        vl_igpm = f"{float(igpm_atual.indice):.2f}%".replace(".", ",")
+        dt = igpm_atual.dt_referencia
+        dtref_igpm = f"{meses[dt.month - 1]} - {dt.year}"
+    else:
+        vl_igpm = "Sem dados"
+        dtref_igpm = ""
+
 
     # Selic -----------------------------------------------------
     selic_atual = Selic.atual()
@@ -139,6 +154,8 @@ def home():
         calendario_anterior=calendario_anterior,
         calendario_atual=calendario_atual,
         calendario_proximo=calendario_proximo,
+        vl_igpm=vl_igpm,
+        dtref_igpm=dtref_igpm,
     )
 
 @home_bp.route("/sistema")
