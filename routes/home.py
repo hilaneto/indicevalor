@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_from_directory, session, redirect, url_for
+from flask import Blueprint, render_template, send_from_directory, session, redirect, url_for, Response
 from datetime import datetime
 import calendar
 from models.moeda import Moeda
@@ -164,3 +164,38 @@ def sistema():
         return redirect(url_for("home.home"))
 
     return render_template("sistema.html")
+
+
+# SEO - Google -----------------------------------------------
+
+@home_bp.route("/robots.txt")
+def robots():
+    conteudo = """User-agent: *
+Allow: /
+Disallow: /logar
+Disallow: /login
+Disallow: /logout
+Disallow: /sistema
+Disallow: /upload
+Disallow: /cdusuario/
+Disallow: /cpf/
+Disallow: /cnpj/
+
+Sitemap: https://indicevalor.com/sitemap.xml
+"""
+    return Response(conteudo, mimetype="text/plain")
+
+
+@home_bp.route("/sitemap.xml")
+def sitemap():
+    urls = ["/", "/contato", "/downloads"]
+
+    conteudo = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    conteudo += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+    for url in urls:
+        conteudo += f"    <url><loc>https://indicevalor.com{url}</loc></url>\n"
+
+    conteudo += "</urlset>"
+
+    return Response(conteudo, mimetype="application/xml")
