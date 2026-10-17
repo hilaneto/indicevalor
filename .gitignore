@@ -1,25 +1,13 @@
-# Ambiente
-.env
-.venv/
-venv/
-
-# Python
+# Python-generated files
 __pycache__/
-*.py[cod]
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
 
-# Flask
-instance/
+# Virtual environments
+.venv/
 
-# VS Code
-.vscode/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
-
-# Configurações locais
-diversos/env_config
-diversos/downloads
+# Environment variables
+.env

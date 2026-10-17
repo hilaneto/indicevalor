@@ -1,24 +1,23 @@
+
 /* =====================================================
-   WEBAPP - ESTILOS PERSONALIZADOS
+   ÍNDICE VALOR - ESTILOS PERSONALIZADOS
 ===================================================== */
 
 :root {
-    --webapp-card-bg: #e6ded3;
-    --webapp-text: #212529;
-    --webapp-muted: #6c757d;
-    --webapp-border: #d1c5b7;
-    --webapp-header: #000000;
-    --webapp-grupo-bg: rgba(255, 255, 255, 0.10);
-    --webapp-calendario-bg: #e6ded3;
+    --iv-card-bg: #e6ded3;
+    --iv-text: #212529;
+    --iv-muted: #6c757d;
+    --iv-border: #d1c5b7;
+    --iv-header: #000000;
+    --iv-grupo-bg: rgba(255, 255, 255, 0.10);
 }
-
 
 /* =====================================================
    PÁGINA
 ===================================================== */
 
 body {
-    color: var(--webapp-text);
+    color: var(--iv-text);
     background-image:
         linear-gradient(rgba(40, 40, 40, 0.22), rgba(40, 40, 40, 0.22)),
         url("../assets/img/bg.jpg");
@@ -28,50 +27,38 @@ body {
     background-repeat: no-repeat;
 }
 
-
 /* =====================================================
    CABEÇALHO
 ===================================================== */
 
-.webapp-header {
-    color: var(--webapp-header);
+.indicevalor-header,
+.indicevalor-header .small {
+    color: var(--iv-header);
 }
-
-.webapp-header .small {
-    color: var(--webapp-header);
-}
-
 
 /* =====================================================
    GRUPOS DE INDICADORES
 ===================================================== */
 
 .grupo-indicadores {
-    background-color: var(--webapp-grupo-bg);
+    background-color: var(--iv-grupo-bg);
     border: 1px solid rgba(255, 255, 255, 0.20);
 }
-
 
 /* =====================================================
    CARDS
 ===================================================== */
 
-.card {
-    background-color: var(--webapp-card-bg);
-    border-color: var(--webapp-border);
+.card,
+.calendario-card {
+    background-color: var(--iv-card-bg);
+    border-color: var(--iv-border);
 }
-
 
 /* =====================================================
    CALENDÁRIO
 ===================================================== */
 
-.calendario-card {
-    background-color: var(--webapp-card-bg);
-    border: 1px solid var(--webapp-border);
-}
-
-/* Container dos três meses */
 .calendarios {
     display: flex;
     align-items: center;
@@ -79,12 +66,10 @@ body {
     gap: 1rem;
 }
 
-/* Meses anterior e próximo */
 .calendario-lateral {
     width: 27%;
 }
 
-/* Mês atual */
 .calendario-atual {
     width: 40%;
     padding: 0 1rem;
@@ -92,28 +77,36 @@ body {
     border-right: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-/* Tabelas */
 .calendario {
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 0;
 }
 
-/* Fundo das células */
 .calendario th,
 .calendario td {
     background-color: transparent;
 }
 
-/* Tamanho dos calendários laterais */
 .calendario-lateral .calendario {
     max-width: 200px;
 }
 
-/* Tamanho do calendário atual */
 .calendario-atual .calendario {
     max-width: 240px;
 }
 
+/* Destaque do mês atual */
+.calendario-destaque .calendario {
+    --bs-table-color: #000000;
+    --bs-table-striped-color: #000000;
+    --bs-table-hover-color: #000000;
+    --bs-table-active-color: #000000;
+}
+
+.calendario-destaque .calendario-titulo {
+    color: #000000 !important;
+}
 
 /* =====================================================
    CALENDÁRIO - CELULAR
@@ -139,14 +132,6 @@ body {
         border-right: none;
     }
 
-    .calendario-lateral .calendario {
-        max-width: 200px;
-    }
-
-    .calendario-atual .calendario {
-        max-width: 240px;
-    }
-
     .calendario-titulo {
         border-top: 1px solid rgba(0, 0, 0, 0.25);
         padding-top: 0.5rem;
@@ -162,35 +147,12 @@ body {
     }
 }
 
-
-/* Destaque do mês atual */
-.calendario-destaque .calendario {
-    --bs-table-color: #000000;
-    --bs-table-striped-color: #000000;
-    --bs-table-hover-color: #000000;
-    --bs-table-active-color: #000000;
-}
-
-.calendario-destaque .calendario-titulo {
-    color: #000000 !important;
-}
-
-
-/* =====================================================
-   TABELAS
-===================================================== */
-
-.calendario {
-    margin-bottom: 0;
-}
-
-
 /* =====================================================
    FONTES DOS DADOS
 ===================================================== */
 
 section:has(.table-fontes) {
-    background-color: var(--webapp-grupo-bg);
+    background-color: var(--iv-grupo-bg);
     border: 1px solid rgba(255, 255, 255, 0.20);
     border-radius: 0.375rem;
     padding: 1rem;
@@ -198,8 +160,8 @@ section:has(.table-fontes) {
 }
 
 section:has(.table-fontes) .table-responsive {
-    background-color: var(--webapp-card-bg);
-    border: 1px solid var(--webapp-border);
+    background-color: var(--iv-card-bg);
+    border: 1px solid var(--iv-border);
     border-radius: 0.375rem;
     padding: 0.5rem 1rem;
 }
@@ -207,4 +169,44 @@ section:has(.table-fontes) .table-responsive {
 .table-fontes th,
 .table-fontes td {
     background-color: transparent;
+}
+
+/* =====================================================
+   RODAPÉ INSTITUCIONAL
+===================================================== */
+
+.home__credito {
+    padding: 20px 15px;
+    margin-top: 32px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--iv-text);
+    border-top: 1px solid #ced4da;
+}
+
+.home__credito strong {
+    color: #198754;
+    font-weight: 700;
+}
+
+.home__credito a {
+    color: #146c43;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.home__credito a:hover {
+    color: #0f5132;
+    text-decoration: underline;
+}
+
+
+/* Logotipo Índice Valor */
+.indicevalor-logo {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 12px;
 }
