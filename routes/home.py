@@ -11,6 +11,7 @@ from models.salario import Salario
 from models.temperatura import Temperatura
 from models.ibovespa import Ibovespa
 from models.igpm import Igpm
+from models.indicador_info import IndicadorInfo
 
 
 home_bp = Blueprint('home', __name__)
@@ -160,6 +161,10 @@ def home():
     vl_ibovespa_variacao = f"{float(ibovespa_atual.variacao):,.2f}%".replace(",", "X").replace(".", ",").replace("X", ".")
     dtref_ibovespa = ibovespa_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
+    # indicadores_info -------
+    indicadores_info = IndicadorInfo.buscar()
+
+
     return render_template(
         "home.html",
         vl_dolarc_compra =vl_dolarc_compra,
@@ -199,6 +204,7 @@ def home():
         dtref_cdi=dtref_cdi,
         vl_tr=vl_tr,
         dtref_tr=dtref_tr,
+        indicadores_info=indicadores_info,
     )
 
 @home_bp.route("/sistema")

@@ -212,3 +212,13 @@ section:has(.table-fontes) .table-responsive {
         max-width: 240px;
     }
 }
+
+/* =====================================================
+   POPUP DOS INDICADORES
+===================================================== */
+
+.modal-indicador {
+    background-color: var(--iv-card-bg);
+    color: var(--iv-text);
+    border: 1px solid var(--iv-border);
+}
