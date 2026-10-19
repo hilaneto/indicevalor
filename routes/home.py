@@ -3,6 +3,7 @@ from datetime import datetime
 import calendar
 from models.moeda import Moeda
 from models.ipca import Ipca
+from models.inpc import Inpc
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
@@ -54,6 +55,18 @@ def home():
     vl_ipca_formato = f"{vl_ipca:.2f}%".replace(".", ",")
     dt = ipca_atual.dt_referencia
     dtref_ipca = f"{meses[dt.month - 1]} - {dt.year}"
+ 
+
+    # INPC -----------------------------------------------------
+    inpc_atual = Inpc.atual()
+
+    if inpc_atual:
+        vl_inpc = f"{float(inpc_atual.indice):.2f}%".replace(".", ",")
+        dt = inpc_atual.dt_referencia
+        dtref_inpc = f"{meses[dt.month - 1]} - {dt.year}"
+    else:
+        vl_inpc = "Sem dados"
+        dtref_inpc = ""
 
 
     # IGP-M -----------------------------------------------------
@@ -156,6 +169,8 @@ def home():
         calendario_proximo=calendario_proximo,
         vl_igpm=vl_igpm,
         dtref_igpm=dtref_igpm,
+        vl_inpc=vl_inpc,
+        dtref_inpc=dtref_inpc,
     )
 
 @home_bp.route("/sistema")
