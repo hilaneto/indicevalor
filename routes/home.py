@@ -85,7 +85,7 @@ def home():
     tr_atual = Tr.atual()
 
     if tr_atual:
-        vl_tr = f"{float(tr_atual.indice):.2f}%".replace(".", ",")
+        vl_tr = f"{float(tr_atual.indice):.4f}%".replace(".", ",")
         dt = tr_atual.dt_referencia
         dtref_tr = f"{meses[dt.month - 1]} - {dt.year}"
     else:
