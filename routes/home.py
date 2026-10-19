@@ -4,6 +4,8 @@ import calendar
 from models.moeda import Moeda
 from models.ipca import Ipca
 from models.inpc import Inpc
+from models.tr import Tr
+from models.cdi import Cdi
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
@@ -67,6 +69,28 @@ def home():
     else:
         vl_inpc = "Sem dados"
         dtref_inpc = ""
+
+    # CDI -----------------------------------------------------
+    cdi_atual = Cdi.atual()
+
+    if cdi_atual:
+        vl_cdi = f"{float(cdi_atual.indice):.2f}%".replace(".", ",")
+        dt = cdi_atual.dt_referencia
+        dtref_cdi = f"{meses[dt.month - 1]} - {dt.year}"
+    else:
+        vl_cdi = "Sem dados"
+        dtref_cdi = ""
+
+    # TR -----------------------------------------------------
+    tr_atual = Tr.atual()
+
+    if tr_atual:
+        vl_tr = f"{float(tr_atual.indice):.2f}%".replace(".", ",")
+        dt = tr_atual.dt_referencia
+        dtref_tr = f"{meses[dt.month - 1]} - {dt.year}"
+    else:
+        vl_tr = "Sem dados"
+        dtref_tr = ""
 
 
     # IGP-M -----------------------------------------------------
@@ -171,6 +195,10 @@ def home():
         dtref_igpm=dtref_igpm,
         vl_inpc=vl_inpc,
         dtref_inpc=dtref_inpc,
+        vl_cdi=vl_cdi,
+        dtref_cdi=dtref_cdi,
+        vl_tr=vl_tr,
+        dtref_tr=dtref_tr,
     )
 
 @home_bp.route("/sistema")

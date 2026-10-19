@@ -95,9 +95,7 @@
         ====================================================== -->
         <section class="grupo-indicadores p-3 mb-4 rounded">
 
-            <div class="text-center fw-bold mb-3">
-                Câmbio
-            </div>
+            <div class="text-center fw-bold mb-3"> Câmbio </div>
 
             <div class="row g-3 justify-content-center">
 
@@ -149,56 +147,26 @@
                     </div>
                 </div>
 
-
                 <!-- Euro -->
                 <div class="col-12 col-md-6 col-lg-2">
-
                     <div class="card text-center shadow-sm h-100">
-
                         <div class="card-body py-2 px-3">
-
-                            <h5 class="mb-1">
-                                Euro
-                            </h5>
-
-                            <p class="fs-4 fw-bold mb-0 lh-sm">
-                                {{ vl_euro }}
-                            </p>
-
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm">
-                                {{ dtref_euro }}
-                            </p>
-
+                            <h5 class="mb-1"> Euro </h5>
+                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_euro }} </p>
+                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_euro }} </p>
                         </div>
-
                     </div>
-
                 </div>
-
 
                 <!-- Bitcoin -->
                 <div class="col-12 col-md-6 col-lg-2">
-
                     <div class="card text-center shadow-sm h-100">
-
                         <div class="card-body py-2 px-3">
-
-                            <h5 class="mb-1">
-                                Bitcoin
-                            </h5>
-
-                            <p class="fs-4 fw-bold mb-0 lh-sm">
-                                {{ vl_bitcoin }}
-                            </p>
-
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm">
-                                {{ dtref_bitcoin }}
-                            </p>
-
+                            <h5 class="mb-1"> Bitcoin </h5>
+                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_bitcoin }} </p>
+                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_bitcoin }} </p>
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
@@ -249,6 +217,27 @@
                     </div>
                 </div>
 
+                <!-- CDI -->
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="card text-center shadow-sm h-100">
+                        <div class="card-body py-2 px-3">
+                            <h5 class="mb-1"> CDI </h5>
+                            <div class="fs-4 fw-bold lh-sm"> {{ vl_cdi }} </div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_cdi }} </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIR -->
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="card text-center shadow-sm h-100">
+                        <div class="card-body py-2 px-3">
+                            <h5 class="mb-1"> TIR </h5>
+                            <div class="fs-4 fw-bold lh-sm"> {{ vl_tir }} </div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_tir }} </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- IGP-M -->
                 <div class="col-12 col-md-6 col-lg-2">
@@ -296,21 +285,13 @@
             <div class="card calendario-card shadow-sm mx-auto" style="max-width: 700px;">
 
                 <div class="card-body py-2 px-3">
-
-                    <div class="text-center mb-2 fw-bold">
-                        Calendário
-                    </div>
-
+                    <div class="text-center mb-2 fw-bold"> Calendário </div>
                     <div class="calendarios">
 
 
                         <!-- Mês anterior -->
                         <div class="calendario-lateral">
-
-                            <div class="calendario-titulo text-center fw-bold">
-                                {{ mes_anterior }}
-                            </div>
-
+                            <div class="calendario-titulo text-center fw-bold"> {{ mes_anterior }} </div>
                             <table
                                 class="table table-sm table-borderless text-center mb-0 calendario"
                                 style="font-size: 0.60rem;"
@@ -358,9 +339,7 @@
                         <!-- Mês atual -->
                         <div class="calendario-atual calendario-destaque">
 
-                            <div class="calendario-titulo text-center fw-bold">
-                                {{ mes_atual }}
-                            </div>
+                            <div class="calendario-titulo text-center fw-bold"> {{ mes_atual }} </div>
 
                             <table
                                 class="table table-sm table-borderless text-center mb-0 calendario"
@@ -451,15 +430,10 @@
                                     {% endfor %}
 
                                 </tbody>
-
                             </table>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
         </section>

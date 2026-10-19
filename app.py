@@ -28,6 +28,5 @@ app.register_blueprint(download_bp)
 app.register_blueprint(cpf_bp, url_prefix="/cpf")
 app.register_blueprint(cnpj_bp, url_prefix="/cnpj")
 
-
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5154, debug=True, use_reloader=False)
