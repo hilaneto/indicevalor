@@ -731,6 +731,52 @@
         {% endfor %}
 
 
+
+    <!-- =====================================================
+        Banner de dados históricos
+    ====================================================== -->
+<div class="modal fade" id="modalHistoricos" tabindex="-1"
+     aria-labelledby="tituloHistoricos" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-indicador">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-normal" id="tituloHistoricos">
+                    Explore nossos dados históricos
+                </h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Precisa analisar a evolução do dólar, IPCA, Selic
+                   ou outros indicadores econômicos?</p>
+
+                <p>Entre em contato e conheça as possibilidades de
+                   acesso às séries históricas do Índice Valor.</p>
+
+                <p class="small text-secondary mb-0">
+                    Conte-nos quais dados você procura.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Agora não</button>
+
+                <a href="{{ url_for('contato.contato') }}"
+                   class="btn btn-success">
+                    Tenho interesse
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
     <!-- =====================================================
          BOOTSTRAP JAVASCRIPT
     ====================================================== -->
@@ -739,14 +785,11 @@
 
 <!-- Botão Flutuante -->
 <a href="{{ url_for('contato.contato') }}"
-   class="btn-contato-flutuante"
-   title="Entre em contato"
-   aria-label="Entre em contato">
-    ✉
+   class="btn-historico-flutuante"
+   title="Solicite dados históricos dos indicadores">
+    <span>▤</span>
+    Dados históricos
 </a>
-
-
-</body>
 
 <footer class="home__credito">
     <span>
@@ -757,4 +800,31 @@
     </span>
 </footer>
 
+<button type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#modalHistoricos">
+    Testar popup
+</button>
+
+<!-- =====================================================
+     Controle de exibição do modal de dados históricos
+====================================================== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalHistoricos");
+
+    console.log("Modal encontrado:", modal);
+    console.log("Bootstrap:", typeof bootstrap);
+
+    if (!modal) return;
+
+    setTimeout(() => {
+        console.log("Tentando abrir o popup...");
+        bootstrap.Modal.getOrCreateInstance(modal).show();
+    }, 10000);
+});
+</script>
+
+</body>
 </html>

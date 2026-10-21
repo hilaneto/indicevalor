@@ -91,80 +91,203 @@
 
 
         <!-- =====================================================
-             CÂMBIO
+             CÂMBIO E CRIPTOATIVOS
         ====================================================== -->
         <section class="grupo-indicadores p-3 mb-4 rounded">
 
-            <div class="text-center fw-bold mb-3"> Câmbio </div>
+            <div class="text-center fw-bold mb-3"> Câmbio e Criptoativos </div>
 
             <div class="row g-3 justify-content-center">
 
                 <!-- Dólar Comercial -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-2">Dólar Comercial</h5>
-                            <div class="row">
+                        <div class="card-body py-2 px-3 position-relative">
 
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalDOLAR_COMERCIAL"
+                                    aria-label="Informações sobre o Dólar Comercial"
+                                    title="Sobre o Dólar Comercial">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-2">Dólar Comercial</h5>
+
+                            <div class="row">
                                 <div class="col-6 border-end">
-                                    <div class="small text-muted"> Compra </div>
-                                    <div class="fs-5 fw-bold"> {{ vl_dolarc_compra }} </div>
-                                    <div class="small text-muted"> {{ dtref_dolarc_compra }} </div>
+                                    <div class="small text-muted">Compra</div>
+                                    <div class="fs-4 fw-bold">{{ vl_dolarc_compra }}</div>
+                                    <div class="small text-muted">{{ dtref_dolarc_compra }}</div>
                                 </div>
 
                                 <div class="col-6">
-                                    <div class="small text-muted"> Venda </div>
-                                    <div class="fs-5 fw-bold"> {{ vl_dolarc_venda }} </div>
-                                    <div class="small text-muted"> {{ dtref_dolarc_venda }} </div>
+                                    <div class="small text-muted">Venda</div>
+                                    <div class="fs-4 fw-bold">{{ vl_dolarc_venda }}</div>
+                                    <div class="small text-muted">{{ dtref_dolarc_venda }}</div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Dólar Turismo -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-2">Dólar Turismo</h5>
-                            <div class="row">
+                        <div class="card-body py-2 px-3 position-relative">
 
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalDOLAR_TURISMO"
+                                    aria-label="Informações sobre o Dólar Turismo"
+                                    title="Sobre o Dólar Turismo">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-2">Dólar Turismo</h5>
+
+                            <div class="row">
                                 <div class="col-6 border-end">
-                                    <div class="small text-muted"> Compra </div>
-                                    <div class="fs-5 fw-bold"> {{ vl_dolart_compra }} </div>
-                                    <div class="small text-muted"> {{ dtref_dolart_compra }} </div>
+                                    <div class="small text-muted">Compra</div>
+                                    <div class="fs-4 fw-bold">{{ vl_dolart_compra }}</div>
+                                    <div class="small text-muted">{{ dtref_dolart_compra }}</div>
                                 </div>
 
                                 <div class="col-6">
-                                    <div class="small text-muted"> Venda </div>
-                                    <div class="fs-5 fw-bold"> {{ vl_dolart_venda }} </div>
-                                    <div class="small text-muted"> {{ dtref_dolart_venda }} </div>
+                                    <div class="small text-muted">Venda</div>
+                                    <div class="fs-4 fw-bold">{{ vl_dolart_venda }}</div>
+                                    <div class="small text-muted">{{ dtref_dolart_venda }}</div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Euro -->
-                <div class="col-12 col-md-6 col-lg-2">
+            <!-- Euro -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body py-2 px-3 position-relative">
+
+                        <button type="button"
+                                class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEURO"
+                                aria-label="Informações sobre o Euro"
+                                title="Sobre o Euro">
+                            ⓘ
+                        </button>
+
+                        <h5 class="mb-1">EURO</h5>
+                        <div class="fs-4 fw-bold lh-sm">{{ vl_euro }}</div>
+                        <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_euro }}</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bitcoin -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body py-2 px-3 position-relative">
+
+                        <button type="button"
+                                class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalBITCOIN"
+                                aria-label="Informações sobre o Bitcoin"
+                                title="Sobre o Bitcoin">
+                            ⓘ
+                        </button>
+
+                        <h5 class="mb-1">BITCOIN</h5>
+                        <div class="fs-4 fw-bold lh-sm">{{ vl_bitcoin }}</div>
+                        <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_bitcoin }}</div>
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INFLAÇÃO E PREÇOS
+        ====================================================== -->
+        <section class="grupo-indicadores p-3 mb-4 rounded">
+
+            <div class="text-center fw-bold mb-3"> Inflação e Preços </div>
+
+            <div class="row g-3 justify-content-center">
+
+                <!-- IPCA -->
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> Euro </h5>
-                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_euro }} </p>
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_euro }} </p>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalIPCA"
+                                    aria-label="Informações sobre o IPCA"
+                                    title="Sobre o IPCA">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">IPCA</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_ipca }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_ipca }}</div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Bitcoin -->
-                <div class="col-12 col-md-6 col-lg-2">
+                <!-- INPC -->
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> Bitcoin </h5>
-                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_bitcoin }} </p>
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_bitcoin }} </p>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalINPC"
+                                    aria-label="Informações sobre o INPC"
+                                    title="Sobre o INPC">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">INPC</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_inpc }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_inpc }}</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IGP-M -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card text-center shadow-sm h-100">
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalIGPM"
+                                    aria-label="Informações sobre o IGP-M"
+                                    title="Sobre o IGP-M">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">IGP-M</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_igpm }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_igpm }}</div>
+
                         </div>
                     </div>
                 </div>
@@ -175,102 +298,139 @@
 
 
         <!-- =====================================================
-             INDICADORES
+             MERCADO FINANCEIRO
         ====================================================== -->
         <section class="grupo-indicadores p-3 mb-4 rounded">
 
-            <div class="text-center fw-bold mb-3"> Indicadores </div>
+            <div class="text-center fw-bold mb-3"> Mercado Financeiro </div>
 
             <div class="row g-3 justify-content-center">
 
                 <!-- Ibovespa -->
-                <div class="col-12 col-md-6 col-lg-2">
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> Ibovespa </h5>
-                            <div class="fs-5 small fw-bold"> {{ vl_ibovespa }} pts </div>
-                            <div class="small fw-bold"> {{ vl_ibovespa_variacao }} </div>
-                            <div class="small text-muted"> {{ dtref_ibovespa }} </div>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalIBOVESPA"
+                                    aria-label="Informações sobre o Ibovespa"
+                                    title="Sobre o Ibovespa">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">IBOVESPA</h5>
+                            <div class="fs-4 small fw-bold"> {{ vl_ibovespa }} pts </div>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_ibovespa_variacao }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_ibovespa }}</div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- IPCA -->
-                <div class="col-12 col-md-6 col-lg-2">
+
+                <!-- Selic -->
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> IPCA </h5>
-                            <div class="fs-4 fw-bold lh-sm"> {{ vl_ipca }} </div>
-                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_ipca }} </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- INPC -->
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> INPC </h5>
-                            <div class="fs-4 fw-bold lh-sm"> {{ vl_inpc }} </div>
-                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_inpc }} </div>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalSELIC"
+                                    aria-label="Informações sobre o Selic"
+                                    title="Sobre o Selic">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">SELIC</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_selic }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_selic }}</div>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- CDI -->
-                <div class="col-12 col-md-6 col-lg-2">
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> CDI </h5>
-                            <div class="fs-4 fw-bold lh-sm"> {{ vl_cdi }} </div>
-                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_cdi }} </div>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalCDI"
+                                    aria-label="Informações sobre o CDI"
+                                    title="Sobre o CDI">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">CDI</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_cdi }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_cdi }}</div>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- TR -->
-                <div class="col-12 col-md-6 col-lg-2">
+                <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> TR </h5>
-                            <div class="fs-4 fw-bold lh-sm"> {{ vl_tr }} </div>
-                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_tr }} </div>
+                        <div class="card-body py-2 px-3 position-relative">
+
+                            <button type="button"
+                                    class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalTR"
+                                    aria-label="Informações sobre o TR"
+                                    title="Sobre o TR">
+                                ⓘ
+                            </button>
+
+                            <h5 class="mb-1">TR</h5>
+                            <div class="fs-4 fw-bold lh-sm">{{ vl_tr }}</div>
+                            <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_tr }}</div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- IGP-M -->
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> IGP-M </h5>
-                            <div class="fs-4 fw-bold lh-sm"> {{ vl_igpm }} </div>
-                            <div class="small mt-4 pt-1 text-muted lh-sm"> {{ dtref_igpm }} </div>
-                        </div>
-                    </div>
-                </div>                
+            </div>
 
-                <!-- Selic -->
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> Selic </h5>
-                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_selic }} </p>
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_selic }} </p>
-                        </div>
+        </section>
+
+
+        <!-- =====================================================
+             ECONOMIA E TRABALHO
+        ====================================================== -->
+        <section class="grupo-indicadores p-3 mb-4 rounded">
+
+            <div class="text-center fw-bold mb-3"> Economia e Trabalho </div>
+
+            <div class="row g-3 justify-content-center">
+
+            <!-- Salário Mínimo -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body py-2 px-3 position-relative">
+
+                        <button type="button"
+                                class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalSALARIO"
+                                aria-label="Informações sobre o Salário Mínimo"
+                                title="Sobre o Salário Mínimo">
+                            ⓘ
+                        </button>
+
+                        <h5 class="mb-1">Salário Mínimo</h5>
+                        <div class="fs-4 fw-bold lh-sm">{{ vl_salario }}</div>
+                        <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_salario }}</div>
+
                     </div>
                 </div>
-
-                <!-- Salário Mínimo -->
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="card text-center shadow-sm h-100">
-                        <div class="card-body py-2 px-3">
-                            <h5 class="mb-1"> Salário Mínimo </h5>
-                            <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_salario }} </p>
-                            <p class="small mb-0 mt-4 pt-1 text-muted lh-sm"> {{ dtref_salario }} </p>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
             </div>
 
@@ -287,7 +447,6 @@
                 <div class="card-body py-2 px-3">
                     <div class="text-center mb-2 fw-bold"> Calendário </div>
                     <div class="calendarios">
-
 
                         <!-- Mês anterior -->
                         <div class="calendario-lateral">
@@ -438,26 +597,37 @@
 
         </section>
 
-
         <!-- =====================================================
-             TEMPERATURA
+            TEMPERATURA
         ====================================================== -->
         <section class="grupo-indicadores p-3 mb-4 rounded">
 
             <div class="card shadow-sm mx-auto" style="max-width: 500px;">
-                <div class="card-body py-2 px-3">
-                    <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
+                <div class="card-body py-2 px-3 position-relative">
+
+                    <button type="button"
+                            class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalTEMPERATURA"
+                            aria-label="Informações sobre Temperatura"
+                            title="Sobre Temperatura">
+                        ⓘ
+                    </button>
+
+                    <div class="text-center mb-2 fw-bold">
+                        Temperatura nas Capitais
+                    </div>
+
                     <div style="max-height: 220px; overflow-y: auto;">
                         {% for item in temperaturas %}
-                        <div
-                            class="d-flex justify-content-between align-items-center py-0 border-bottom"
-                            style="font-size: 0.80rem;"
-                        >
-                            <span> {{ item.cidade }} </span>
-                            <strong> {{ item.temperatura }} </strong>
+                        <div class="d-flex justify-content-between align-items-center py-0 border-bottom"
+                            style="font-size: 0.80rem;">
+                            <span>{{ item.cidade }}</span>
+                            <strong>{{ item.temperatura }}</strong>
                         </div>
                         {% endfor %}
                     </div>
+
                 </div>
             </div>
 
@@ -487,7 +657,7 @@
 
             <tr>
                 <td class="py-1">IPCA | INPC | IGP-M | Selic | CDI | TR | Salário Mínimo</td>
-                <td class="py-1">
+                <td class="py-1"> 
                     <a href="https://www.bcb.gov.br" target="_blank" rel="noopener noreferrer">Banco Central</a>
                 </td>
             </tr>
@@ -495,8 +665,7 @@
             <tr>
                 <td class="py-1">Ibovespa</td>
                 <td class="py-1">
-                    <a href="https://www.b3.com.br"
-                    target="_blank" rel="noopener noreferrer">B3</a>
+                    <a href="https://www.b3.com.br" target="_blank" rel="noopener noreferrer">B3</a>
                 </td>
             </tr>
 
@@ -517,13 +686,112 @@
     </main>
 
 
+    <!-- Modais dos indicadores -->
+        {% for codigo, info in indicadores_info.items() %}
+
+        <div class="modal fade" id="modal{{ codigo }}" tabindex="-1"
+            aria-labelledby="titulo{{ codigo }}" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-indicador">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-normal" id="titulo{{ codigo }}">
+                            {{ codigo }}
+                        </h5>
+                        <button type="button" class="btn-close"
+                                data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="fw-normal text-secondary mb-3"> {{ info.titulo }} </div>
+                        <p class="fw-normal small lh-lg">{{ info.descricao }}</p>
+                        <hr>
+
+                        <p class="small mb-2"> <span class="text-secondary">Periodicidade:</span> {{ info.periodicidade }} </p>
+                        <p class="small mb-2"> <span class="text-secondary">Fonte:</span> {{ info.fonte }} </p>
+
+                        {% if info.url_fonte %}
+                        <a href="{{ info.url_fonte }}" target="_blank"
+                        rel="noopener noreferrer">
+                            Consultar fonte oficial
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Fechar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+    <!-- =====================================================
+        Banner de dados históricos
+    ====================================================== -->
+<div class="modal fade" id="modalHistoricos" tabindex="-1"
+     aria-labelledby="tituloHistoricos" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-indicador">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-normal" id="tituloHistoricos">
+                    Explore nossos dados históricos
+                </h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Precisa analisar a evolução do dólar, IPCA, Selic
+                   ou outros indicadores econômicos?</p>
+
+                <p>Entre em contato e conheça as possibilidades de
+                   acesso às séries históricas do Índice Valor.</p>
+
+                <p class="small text-secondary mb-0">
+                    Conte-nos quais dados você procura.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Agora não</button>
+
+                <a href="{{ url_for('contato.contato', origem='historicos') }}"
+                   class="btn btn-success">
+                    Tenho interesse
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
     <!-- =====================================================
          BOOTSTRAP JAVASCRIPT
     ====================================================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
 
+<!-- Botão flutuante -->
+<a href="{{ url_for('contato.contato') }}"
+   class="btn-historico-flutuante"
+   title="Solicite dados históricos dos indicadores">
+    <span>▤</span>
+    Dados históricos
+</a>
+
+<!-- Rodapé -->
 <footer class="home__credito">
     <span>
         © 2026 | Desenvolvido por
@@ -532,5 +800,54 @@
         <a href="mailto:jhandados@gmail.com">jhandados@gmail.com</a>
     </span>
 </footer>
+
+<!-- Controle de exibição do banner -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalHistoricos");
+    if (!modal || sessionStorage.getItem("historicos_exibido")) return;
+    setTimeout(() => {
+        const exibir = () => {
+            if (document.querySelector(".modal.show")) {
+                setTimeout(exibir, 3000);
+                return;
+            }
+            bootstrap.Modal.getOrCreateInstance(modal).show();
+            sessionStorage.setItem("historicos_exibido", "1");
+        };
+        exibir();
+    }, 30000);
+});
+</script>
+
+</body>
+</html>
+
+
+<!-- =====================================================
+     Controle de exibição do modal de dados históricos
+====================================================== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalHistoricos");
+
+    if (!modal || sessionStorage.getItem("historicos_exibido")) return;
+
+    setTimeout(() => {
+        const exibir = () => {
+            if (document.querySelector(".modal.show")) {
+                setTimeout(exibir, 3000);
+                return;
+            }
+
+            bootstrap.Modal.getOrCreateInstance(modal).show();
+            sessionStorage.setItem("historicos_exibido", "1");
+        };
+
+        exibir();
+    }, 30000);
+});
+</script>
+
 
 </html>

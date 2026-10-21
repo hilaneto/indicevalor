@@ -1,27 +1,28 @@
-from peewee import *
+from peewee import Model, AutoField, CharField, SQL
+from playhouse.postgres_ext import BinaryJSONField, DateTimeTZField
 from database.conexao import db
 
 class Contato(Model):
     cd_contato = AutoField()
     nm_contato = CharField(max_length=80)
     email = CharField(max_length=120, unique=True)
-    celular = CharField(max_length=20, unique=True, null=True)
+    celular = CharField(max_length=20, unique=True)
     comentario = CharField(max_length=200)
-    dt_nascimento = DateField(null=True)
-    dt_cadastro = DateTimeField()
+    indicadores = BinaryJSONField(default=list)
+    dt_cadastro = DateTimeTZField(constraints=[SQL("DEFAULT CURRENT_TIMESTAMP")])
 
     class Meta:
         database = db
-        table_name = "tb_contato"
+        table_name = "tb_contato"        
 
     @classmethod
-    def inserir(cls, nm_contato, email, celular, comentario, dt_nascimento=None):
+    def inserir(cls, dados):
         return cls.create(
-            nm_contato=nm_contato,
-            email=email,
-            celular=celular,
-            comentario=comentario,
-            dt_nascimento=dt_nascimento
+            nm_contato=dados.get("nm_contato"),
+            email=dados.get("email"),
+            celular=dados.get("celular"),
+            comentario=dados.get("comentario"),
+            indicadores=dados.get("indicadores") or []
         )
 
     @classmethod
@@ -37,14 +38,14 @@ class Contato(Model):
         return cls.select().where(cls.celular == celular)
 
     @classmethod
-    def atualizar(cls, cd_contato, nm_contato, email, celular=None, comentario=None, dt_nascimento=None):
+    def atualizar(cls, cd_contato, dados):
         return (cls.update(
-                nm_contato=nm_contato,
-                email=email,
-                celular=celular,
-                comentario=comentario,
-                dt_nascimento=dt_nascimento
-                ).where(cls.cd_contato == cd_contato).execute())
+            nm_contato=dados.get("nm_contato"),
+            email=dados.get("email"),
+            celular=dados.get("celular"),
+            comentario=dados.get("comentario"),
+            indicadores=dados.get("indicadores") or []
+        ).where(cls.cd_contato == cd_contato).execute())
 
     @classmethod
     def excluir(cls, cd_contato):
