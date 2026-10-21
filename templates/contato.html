@@ -15,17 +15,17 @@
 
 <body>
 
-    <main class="container py-5">
+    <main class="container py-3">
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
 
-                <div class="card shadow-sm form-contato"></div>                    
-                    <div class="card-body">
+                <div class="card shadow-sm form-contato">
+                    <div class="card-body p-3">
 
                         <h5 class="text-center mb-2">Entre em contato</h5>
 
-                        <p class="text-center text-secondary small mb-4">
+                        <p class="text-center text-secondary small mb-2">
                             Precisa de dados históricos ou informações sobre
                             indicadores econômicos? Conte-nos seu interesse.
                         </p>
@@ -98,13 +98,8 @@
                                           required>{{ request.form.get('comentario', '') if not sucesso else '' }}</textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-sm"></button>
-                                Enviar contato
-                            </button>
-
-                            <a href="{{ url_for('home.home') }}" class="btn btn-secondary btn-sm"></a>                                
-                                Voltar
-                            </a>
+                            <button type="submit" class="btn btn-primary btn-sm">Enviar contato</button>
+                            <a href="{{ url_for('home.home') }}" class="btn btn-secondary btn-sm">Voltar</a>
 
                         </form>
 
