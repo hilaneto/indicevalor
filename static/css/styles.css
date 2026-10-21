@@ -222,3 +222,40 @@ section:has(.table-fontes) .table-responsive {
     color: var(--iv-text);
     border: 1px solid var(--iv-border);
 }
+
+.btn-info-indicador {
+    color: #00865A;
+}
+
+.btn-info-indicador:hover {
+    color: #005c3e;
+}
+
+
+
+/* =====================================================
+   Botão Contatato Flutuante
+===================================================== */
+
+.btn-contato-flutuante {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00865A;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.20);
+    z-index: 1050;
+}
+
+.btn-contato-flutuante:hover {
+    background: #005c3e;
+    color: #fff;
+}
