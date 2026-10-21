@@ -292,3 +292,14 @@ section:has(.table-fontes) .table-responsive {
     background-color: #005c3e;
     border-color: #005c3e;
 }
+
+/* Formulário de contato em dispositivos móveis */
+@media (max-width: 576px) {
+    .form-contato .form-control {
+        font-size: 16px;
+    }
+
+    .form-contato .form-check-label {
+        font-size: 0.85rem;
+    }
+}
