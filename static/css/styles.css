@@ -362,3 +362,10 @@ section:has(.table-fontes) .table-responsive {
         min-height: 36px;
     }
 }
+
+.rodape-indicador {
+    margin-top: 5px;
+    font-size: 0.80rem;
+    line-height: 1.4;
+    color: #6c757d;
+}
