@@ -1,21 +1,12 @@
 from flask import Blueprint, render_template, send_from_directory, session, redirect, url_for, Response
 from datetime import datetime
 import calendar
+from models.indicador import Indicador
 from models.moeda import Moeda
-from models.ipca import Ipca
-from models.inpc import Inpc
-from models.tr import Tr
-from models.cdi import Cdi
-from models.selic import Selic
-from models.salario import Salario
 from models.temperatura import Temperatura
 from models.ibovespa import Ibovespa
-from models.igpm import Igpm
-from models.pib_variacao import PibVariacao
 from models.pib_valores import PibValores
-from models.populacao import Populacao
 from models.indicador_info import IndicadorInfo
-
 
 
 home_bp = Blueprint('home', __name__)
@@ -28,6 +19,44 @@ def formatar_real_4casas(valor):
 
 @home_bp.route("/")
 def home():
+    indicadores = Indicador.atuais()
+
+    meses = ["Janeiro", "Fevereiro", "Março", "Abril",
+             "Maio", "Junho", "Julho", "Agosto",
+             "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+    def percentual(nome, casas=2, sinal=False):
+        registro = indicadores.get(nome)
+        if not registro:
+            return "Sem dados", ""
+
+        valor = f"{float(registro.valor):+.{casas}f}%" if sinal else f"{float(registro.valor):.{casas}f}%"
+        dt = registro.dt_referencia
+        return valor.replace(".", ","), f"{meses[dt.month - 1]} - {dt.year}"
+
+    vl_ipca_formato, dtref_ipca = percentual("IPCA")
+    vl_inpc, dtref_inpc = percentual("INPC")
+    vl_cdi, dtref_cdi = percentual("CDI")
+    vl_tr, dtref_tr = percentual("TR", 4)
+    vl_igpm, dtref_igpm = percentual("IGPM")
+
+    vl_pib_variacao, dtref_pib_variacao = percentual("PIB", sinal=True)
+    if indicadores.get("PIB"):
+        dt = indicadores["PIB"].dt_referencia
+        dtref_pib_variacao = f"{(dt.month - 1) // 3 + 1}º trimestre de {dt.year}"
+
+    selic = indicadores.get("SELIC")
+    vl_selic_formato = f"{float(selic.valor):.2f}%".replace(".", ",") if selic else "Sem dados"
+    dtref_selic = selic.dt_referencia.strftime("%d/%m/%Y") if selic else ""
+
+    salario = indicadores.get("SALARIO")
+    vl_salario = formatar_real(float(salario.valor)) if salario else "Sem dados"
+    dtref_salario = salario.dt_referencia.strftime("%d/%m/%Y") if salario else ""
+
+    populacao = indicadores.get("POPULACAO")
+    vl_populacao = f"{int(populacao.valor):,}".replace(",", ".") if populacao else "Sem dados"
+    dtref_populacao = str(populacao.dt_referencia.year) if populacao else ""
+
 
     # Moedas ----------------------------------------------------
     dolarc_compra = Moeda.atual("USDCC")
@@ -52,75 +81,6 @@ def home():
     dtref_euro = euro_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
     dtref_bitcoin = bitcoin_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
-    # IPCA ------------------------------------------------------
-    meses = ["Janeiro", "Fevereiro", "Março", "Abril",
-             "Maio", "Junho", "Julho", "Agosto",
-             "Setembro", "Outubro", "Novembro", "Dezembro"]
-
-    ipca_atual = Ipca.atual()
-    vl_ipca = float(ipca_atual.indice)
-    vl_ipca_formato = f"{vl_ipca:.2f}%".replace(".", ",")
-    dt = ipca_atual.dt_referencia
-    dtref_ipca = f"{meses[dt.month - 1]} - {dt.year}"
- 
-
-    # INPC -----------------------------------------------------
-    inpc_atual = Inpc.atual()
-
-    if inpc_atual:
-        vl_inpc = f"{float(inpc_atual.indice):.2f}%".replace(".", ",")
-        dt = inpc_atual.dt_referencia
-        dtref_inpc = f"{meses[dt.month - 1]} - {dt.year}"
-    else:
-        vl_inpc = "Sem dados"
-        dtref_inpc = ""
-
-    # CDI -----------------------------------------------------
-    cdi_atual = Cdi.atual()
-
-    if cdi_atual:
-        vl_cdi = f"{float(cdi_atual.indice):.2f}%".replace(".", ",")
-        dt = cdi_atual.dt_referencia
-        dtref_cdi = f"{meses[dt.month - 1]} - {dt.year}"
-    else:
-        vl_cdi = "Sem dados"
-        dtref_cdi = ""
-
-    # TR -----------------------------------------------------
-    tr_atual = Tr.atual()
-
-    if tr_atual:
-        vl_tr = f"{float(tr_atual.indice):.4f}%".replace(".", ",")
-        dt = tr_atual.dt_referencia
-        dtref_tr = f"{meses[dt.month - 1]} - {dt.year}"
-    else:
-        vl_tr = "Sem dados"
-        dtref_tr = ""
-
-
-    # IGP-M -----------------------------------------------------
-    igpm_atual = Igpm.atual()
-
-    if igpm_atual:
-        vl_igpm = f"{float(igpm_atual.indice):.2f}%".replace(".", ",")
-        dt = igpm_atual.dt_referencia
-        dtref_igpm = f"{meses[dt.month - 1]} - {dt.year}"
-    else:
-        vl_igpm = "Sem dados"
-        dtref_igpm = ""
-
-
-    # PIB — Variaćão ----------------------------------------------
-    pib_atual = PibVariacao.atual()
-
-    if pib_atual:
-        vl_pib_variacao = f"{float(pib_atual.indice):+.2f}%".replace(".", ",")
-        dt = pib_atual.dt_referencia
-        dtref_pib_variacao = f"{(dt.month - 1) // 3 + 1}º trimestre de {dt.year}"
-    else:
-        vl_pib_variacao = "Sem dados"
-        dtref_pib_variacao = ""
-
     # PIB — Valor monetário ---------------------------------------
     pib_valores = PibValores.atual()
 
@@ -131,28 +91,6 @@ def home():
     else:
         vl_pib_monetario = "Sem dados"
         dtref_pib_monetario = ""        
-
-
-    # População Brasileira ---------------------------------------
-    populacao_atual = Populacao.atual()
-
-    if populacao_atual:
-        vl_populacao = f"{populacao_atual.populacao:,}".replace(",", ".")
-        dtref_populacao = str(populacao_atual.dt_referencia.year)
-    else:
-        vl_populacao = "Sem dados"
-        dtref_populacao = ""
-
-    # Selic -----------------------------------------------------
-    selic_atual = Selic.atual()
-    vl_selic = float(selic_atual.indice)
-    vl_selic_formato = f"{vl_selic:.2f}%".replace(".", ",")
-    dtref_selic = selic_atual.dt_referencia.strftime("%d/%m/%Y")
-
-    # Salário Mínimo --------------------------------------------
-    salario_atual = Salario.atual()
-    vl_salario = formatar_real(float(salario_atual.vl_salario))
-    dtref_salario = salario_atual.dt_referencia.strftime("%d/%m/%Y")
 
     # Temperaturas ----------------------------------------------
     temperaturas = []
@@ -259,7 +197,6 @@ def sistema():
 
 
 # SEO - Google -----------------------------------------------
-
 @home_bp.route("/robots.txt")
 def robots():
     conteudo = """User-agent: *
