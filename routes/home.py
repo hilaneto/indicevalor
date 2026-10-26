@@ -11,7 +11,11 @@ from models.salario import Salario
 from models.temperatura import Temperatura
 from models.ibovespa import Ibovespa
 from models.igpm import Igpm
+from models.pib_variacao import PibVariacao
+from models.pib_valores import PibValores
+from models.populacao import Populacao
 from models.indicador_info import IndicadorInfo
+
 
 
 home_bp = Blueprint('home', __name__)
@@ -105,6 +109,39 @@ def home():
         vl_igpm = "Sem dados"
         dtref_igpm = ""
 
+
+    # PIB — Variaćão ----------------------------------------------
+    pib_atual = PibVariacao.atual()
+
+    if pib_atual:
+        vl_pib_variacao = f"{float(pib_atual.indice):+.2f}%".replace(".", ",")
+        dt = pib_atual.dt_referencia
+        dtref_pib_variacao = f"{(dt.month - 1) // 3 + 1}º trimestre de {dt.year}"
+    else:
+        vl_pib_variacao = "Sem dados"
+        dtref_pib_variacao = ""
+
+    # PIB — Valor monetário ---------------------------------------
+    pib_valores = PibValores.atual()
+
+    if pib_valores:
+        vl_pib_monetario = f"R$ {pib_valores.valor_milhoes / 1_000_000:,.3f}".replace(",", "X").replace(".", ",").replace("X", ".") + " trilhões"
+        dt = pib_valores.dt_referencia
+        dtref_pib_monetario = f"{(dt.month - 1) // 3 + 1}º trimestre de {dt.year}"
+    else:
+        vl_pib_monetario = "Sem dados"
+        dtref_pib_monetario = ""        
+
+
+    # População Brasileira ---------------------------------------
+    populacao_atual = Populacao.atual()
+
+    if populacao_atual:
+        vl_populacao = f"{populacao_atual.populacao:,}".replace(",", ".")
+        dtref_populacao = str(populacao_atual.dt_referencia.year)
+    else:
+        vl_populacao = "Sem dados"
+        dtref_populacao = ""
 
     # Selic -----------------------------------------------------
     selic_atual = Selic.atual()
@@ -205,6 +242,12 @@ def home():
         vl_tr=vl_tr,
         dtref_tr=dtref_tr,
         indicadores_info=indicadores_info,
+        vl_pib_variacao=vl_pib_variacao,
+        dtref_pib_variacao=dtref_pib_variacao,
+        vl_populacao=vl_populacao,
+        dtref_populacao=dtref_populacao,
+        vl_pib_monetario=vl_pib_monetario,
+        dtref_pib_monetario=dtref_pib_monetario,
     )
 
 @home_bp.route("/sistema")

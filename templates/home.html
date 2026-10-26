@@ -556,7 +556,73 @@
                 </div>
             </div>
 
+
+            <!-- PIB Brasileiro -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body py-2 px-3 position-relative">
+
+                        <button type="button"
+                                class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalPIB"
+                                aria-label="Informações sobre o PIB Brasileiro"
+                                title="Sobre o PIB Brasileiro">ⓘ</button>
+
+                        <h5 class="mb-1">PIB Brasileiro</h5>
+
+                        <div class="fs-4 fw-bold lh-sm">{{ vl_pib_monetario }}</div>
+                        <div class="small text-muted">{{ dtref_pib_monetario }}</div>
+
+                        <div class="mt-2 fw-semibold">{{ vl_pib_variacao }}</div>
+                        <div class="small text-muted">{{ dtref_pib_variacao }}</div>
+
+                        {% set info = indicadores_info.get('PIB') %}
+                        {% if info %}
+                        <div class="rodape-indicador">
+                            {{ info.periodicidade }} |
+                            <a href="{{ info.url_fonte }}" target="_blank" rel="noopener noreferrer">
+                                {{ info.fonte }}
+                            </a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
             </div>
+
+
+            <!-- População Brasileira -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body py-2 px-3 position-relative">
+
+                        <button type="button"
+                                class="btn btn-sm position-absolute top-0 end-0 m-1 fs-4 btn-info-indicador"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalPOPULACAO"
+                                aria-label="Informações sobre a População Brasileira"
+                                title="Sobre a População Brasileira">
+                            ⓘ
+                        </button>
+
+                        <h5 class="mb-1">População Brasileira</h5>
+                        <div class="fs-4 fw-bold lh-sm">{{ vl_populacao }}</div>
+                        <div class="small mt-4 pt-1 text-muted lh-sm">{{ dtref_populacao }}</div>
+
+                        {% set info = indicadores_info.get('POPULACAO') %}
+                        {% if info %}
+                        <div class="rodape-indicador">
+                            {{ info.periodicidade }} |
+                            <a href="{{ info.url_fonte }}" target="_blank" rel="noopener noreferrer"> {{ info.fonte }} </a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+
 
         </section>
 
@@ -804,11 +870,21 @@
             </tr>
 
             <tr>
+                <td class="py-1">PIB Brasileiro</td>
+                <td class="py-1">
+                    <a href="https://sidra.ibge.gov.br/tabela/5932"
+                    target="_blank" rel="noopener noreferrer">IBGE</a>
+                </td>
+            </tr>
+
+            <tr>
                 <td class="py-1">Temperaturas</td>
                 <td class="py-1">
                     <a href="https://portal.inmet.gov.br" target="_blank" rel="noopener noreferrer">INMET</a>
                 </td>
             </tr>
+
+
         </tbody>
 
     </table>
