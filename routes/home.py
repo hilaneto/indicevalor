@@ -19,6 +19,7 @@ def formatar_real_4casas(valor):
 
 @home_bp.route("/")
 def home():
+
     indicadores = Indicador.atuais()
 
     meses = ["Janeiro", "Fevereiro", "Março", "Abril",
@@ -39,8 +40,8 @@ def home():
     vl_cdi, dtref_cdi = percentual("CDI")
     vl_tr, dtref_tr = percentual("TR", 4)
     vl_igpm, dtref_igpm = percentual("IGPM")
-
     vl_pib_variacao, dtref_pib_variacao = percentual("PIB", sinal=True)
+    
     if indicadores.get("PIB"):
         dt = indicadores["PIB"].dt_referencia
         dtref_pib_variacao = f"{(dt.month - 1) // 3 + 1}º trimestre de {dt.year}"
@@ -139,9 +140,13 @@ def home():
     # indicadores_info -------
     indicadores_info = IndicadorInfo.buscar()
 
+    # Banner --------------------------------------------------
+    exibir_banner = not session.get("banner_historico_exibido", False)
+    session["banner_historico_exibido"] = True
 
     return render_template(
         "home.html",
+        exibir_banner=exibir_banner,
         vl_dolarc_compra =vl_dolarc_compra,
         dtref_dolarc_compra=dtref_dolarc_compra,
         vl_dolarc_venda =vl_dolarc_venda,
@@ -187,6 +192,7 @@ def home():
         vl_pib_monetario=vl_pib_monetario,
         dtref_pib_monetario=dtref_pib_monetario,
     )
+
 
 @home_bp.route("/sistema")
 def sistema():

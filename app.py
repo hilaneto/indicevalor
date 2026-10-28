@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from flask import Flask, render_template
+from flask import Flask
 
 from routes.home import home_bp
 from routes.auth import auth_bp
